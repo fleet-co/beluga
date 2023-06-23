@@ -5,7 +5,9 @@ import SelectBlockDialog from "../../components/SelectBlockDialog";
 import "./Builder.css"
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import SaveIcon from '@mui/icons-material/Save';
-import { IconButton, Stack, TextField, Avatar, Box, Link } from "@mui/material";
+import { IconButton, Stack, TextField, Avatar, Box, Link, Icon } from "@mui/material";
+import NotInterestedIcon from '@mui/icons-material/NotInterested';
+
 import { BlockData } from "../../types/types";
 import { getComponentByType } from "../../blocks";
 import SupabaseService from "../../tools/SupabaseClient";
@@ -66,36 +68,36 @@ const Builder = () => {
   return (
     <>
       <Stack direction="row" position="fixed" top={16} right={16}>
-      <Box
-        sx={{
-          width: "90vw",
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-        }}
-      >
-        <Link href="/"><Avatar alt="Remy Sharp" src={belugaLogo} /></Link>
-        <div>
-          <TextField
-          id="standard-basic"
-          color="primary"
-          label="Standard"
-          variant="standard"
-          value={pageName}
-          onChange={
-            (event: React.ChangeEvent<HTMLInputElement>) => {
-              setPageName(event.target.value);
-            }}
-        />
-        <IconButton
-          color="primary"
-          onClick={() => onSave()}
-          disabled={pageName.length < 5}>
-          <SaveIcon sx={{ fontSize: "32px" }} />
-        </IconButton>
-        </div>
-    
-      </Box>
+        <Box
+          sx={{
+            width: "90vw",
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}
+        >
+          <Link href="/"><Avatar alt="Remy Sharp" src={belugaLogo} /></Link>
+          <div>
+            <TextField
+              id="standard-basic"
+              color="primary"
+              label="Standard"
+              variant="standard"
+              value={pageName}
+              onChange={
+                (event: React.ChangeEvent<HTMLInputElement>) => {
+                  setPageName(event.target.value);
+                }}
+            />
+            <IconButton
+              color="primary"
+              onClick={() => onSave()}
+              disabled={pageName.length < 5}>
+              <SaveIcon sx={{ fontSize: "32px" }} />
+            </IconButton>
+          </div>
+
+        </Box>
 
       </Stack>
       <Stack position="fixed" bottom={16} right={16}>
@@ -111,7 +113,7 @@ const Builder = () => {
         onClose={handleClose}
       />
       {isEditable && <EditBar activeBlock={blocks[activeBlockIndex]} setActiveBlockData={(block: BlockData) => updateBlockAtIndex(activeBlockIndex, block)} />}
-      {blocks.map((block, index: number) => {
+      {blocks.length > 0 ? blocks.map((block, index: number) => {
         const Component = getComponentByType(block.type);
 
         return (
@@ -123,7 +125,12 @@ const Builder = () => {
           </div>
 
         )
-      })}
+      })
+        : <div className="builder-emptyState">
+          <NotInterestedIcon />
+          No Block has been added !! looser
+        </div>
+      }
     </>
   );
 };

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import SupabaseService from "../tools/SupabaseClient";
 import { useParams } from "react-router-dom";
 import { Block } from "../types/types";
