@@ -7,10 +7,11 @@ interface HeaderProps {
   image: string,
   ctaText: string,
   ctaLink: string,
+  isEditable: boolean,
 }
 
 const Header = (props: HeaderProps) => {
-  const { title, description, image, ctaText } = props;
+  const { title, description, image, ctaText, isEditable } = props;
 
   return (
     <Box
@@ -29,6 +30,7 @@ const Header = (props: HeaderProps) => {
         }}
       >
         {title}{description}{image}{ctaText}
+        {isEditable && <p>OK</p>}
       </Box>
     </Box>
   )

@@ -12,7 +12,7 @@ const blocks: BlockData[] = [
   {
     title: 'Hero header',
     Component: Header,
-    type: "HERO"
+    type: "HERO",
   },
   {
     title: 'Blabla Block',

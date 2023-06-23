@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import Button from "@mui/material/Button";
+import Header from "../../components/blocks/Header";
+import EditBar from "../../components/EditBar";
 import SelectBlockDialog from "../../components/SelectBlockDialog";
 import { BlockData } from "../../blocks";
 import "./Builder.css"
@@ -7,8 +10,8 @@ import { IconButton, Stack } from "@mui/material";
 
 function Builder() {
   const [blocks, setBlocks] = useState<any>([]);
-  const [title, setTitle] = useState<string>('');
-  const [description, setDescription] = useState<string>('');
+  const [isEditable, setIsEditable] = useState<boolean>(false);
+  const [activeBlock, setActiveBlock] = useState<BlockData>();
   const [isDialogOpen, setDialogOpen] = useState<boolean>(false);
 
   const handleClose = (value: BlockData | undefined) => {
@@ -20,7 +23,7 @@ function Builder() {
 
   const addBlock = (block: BlockData) => {
     console.log(block)
-    setBlocks([...blocks, <block.Component />]);
+    setBlocks([...blocks, <block.Component isEditable />]);
   }
   return (
     <>
@@ -35,6 +38,7 @@ function Builder() {
         open={isDialogOpen}
         onClose={handleClose}
       />
+      {isEditable && <EditBar activeBlock={activeBlock} />}
       {blocks}
     </>
   )
