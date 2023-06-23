@@ -1,5 +1,16 @@
 import { createClient } from '@supabase/supabase-js';
 
+const pageDataToReturn = `
+  id,
+  name,
+  slug,
+  blocks (
+    id,
+    order,
+    type,
+    contents
+    )`;
+
 class SupabaseService {
   client;
   constructor() {
@@ -11,11 +22,14 @@ class SupabaseService {
 
   async getPages() {
     return await this.client.from("pages")
-      .select(`
-      id,
-      name,
-      slug,
-      blocks (id, order, type, contents)`);
+      .select(pageDataToReturn);
+  }
+
+
+  async getPageBySlug(slug: string) {
+    return await this.client.from("pages")
+      .select(pageDataToReturn)
+      .eq("slug", slug);
   }
 
 };
