@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import SupabaseService from "../tools/SupabaseClient";
 
 interface Block {
@@ -18,8 +18,10 @@ interface Page {
 }
 const TestBenComponent = () => {
   const [pages, setPages] = useState<Page[]>([]);
+
   useEffect(() => {
     const sbs = new SupabaseService();
+
     sbs.getPages().then((p: any) => {
       setPages(p.data);
     });

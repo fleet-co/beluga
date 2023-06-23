@@ -1,8 +1,8 @@
 import "./App.css";
-import belugaLogo from './assets/beluga_logo.png'
-import './App.css'
-import ListPages from './components/ListPages';
-import { Button } from '@mui/material';
+import belugaLogo from "./assets/beluga_logo.png";
+import "./App.css";
+import ListPages from "./components/ListPages";
+import { Button } from "@mui/material";
 import Page from "./components/Page";
 
 const App = () => {

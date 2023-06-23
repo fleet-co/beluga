@@ -1,5 +1,5 @@
-import React from 'react'
-import Box from '@mui/material/Box';
+import React from "react";
+import Box from "@mui/material/Box";
 
 
 interface BlablaBlockContents {
@@ -19,22 +19,22 @@ const BlablaBlock = (props: BlablaBlockProps) => {
     <Box
       sx={{
         width: "100vw",
-        display: 'flex',
+        display: "flex",
         height: 300,
-        backgroundColor: 'primary.dark',
+        backgroundColor: "primary.dark",
       }}
     >
       <Box
         sx={{
           width: "100vw",
-          display: 'flex',
-          flexDirection: 'row',
+          display: "flex",
+          flexDirection: "row",
         }}
       >
         {contents.title}{contents.text}
       </Box>
     </Box>
-  )
-}
+  );
+};
 
 export default BlablaBlock;

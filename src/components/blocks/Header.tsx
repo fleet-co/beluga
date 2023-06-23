@@ -22,27 +22,27 @@ const Header = (props: HeaderProps) => {
     <Box
       sx={{
         width: "100vw",
-        display: 'flex',
+        display: "flex",
         height: 300,
-        backgroundColor: 'warning.main',
+        backgroundColor: "warning.main",
       }}
     >
       <Box
         sx={{
           width: "100vw",
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-around'
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-around",
         }}
       >
         <div>
           <h1>{contents.title || "hello"}</h1>
           <p>{contents.description || "lorum ipsum dolor con la visita de la sagrada familia"}</p>
           <Button variant="contained" href={contents.cta_link || bragman} target="_blank">{contents.cta_text || "Clique ici"}</Button>
-        </div>
-      </Box>
-    </Box>
-  )
-}
+        </div >
+      </Box >
+    </Box >
+  );
+};
 
-export default Header
+export default Header;
