@@ -1,6 +1,8 @@
 .editBarContainer {
   position: fixed;
-  bottom: 0;
+  top: 0;
   right: 0;
+  width: 200px;
+  height: 400px;
   background-color: white;
 }
