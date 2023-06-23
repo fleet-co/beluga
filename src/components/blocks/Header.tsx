@@ -1,6 +1,7 @@
-import React from 'react'
 import Box from '@mui/material/Box';
-
+import { Button } from '@mui/material';
+import belugaLogo from '../../assets/beluga_logo.png'
+import bragman from '../../assets/bragman.jpg'
 interface HeaderProps {
   title: string,
   description: string,
@@ -11,7 +12,7 @@ interface HeaderProps {
 }
 
 const Header = (props: HeaderProps) => {
-  const { title, description, image, ctaText, ctaLink, isEditable } = props;
+  const { title, description, image, ctaText, ctaLink } = props;
 
   return (
     <Box
@@ -19,18 +20,23 @@ const Header = (props: HeaderProps) => {
         width: "100vw",
         display: 'flex',
         height: 300,
-        backgroundColor: 'primary.dark',
+        backgroundColor: 'warning.main',
       }}
     >
       <Box
         sx={{
           width: "100vw",
           display: 'flex',
-          flexDirection: 'column',
+          flexDirection: 'row',
+          justifyContent: 'space-around'
         }}
       >
-        {title}{description}{image}{ctaText}{ctaLink}
-        {isEditable && <p>OK</p>}
+        <div>
+          <h1>{title || "hello"}</h1>
+          <p>{description || "lorum ipsum dolor con la visita de la sagrada familia"}</p>
+          <Button variant="contained" href={ctaLink || bragman} target="_blank">{ctaText ||"Clique ici"}</Button>
+        </div>
+        <img src={image || belugaLogo}/>
       </Box>
     </Box>
   )

@@ -1,5 +1,4 @@
 import "./App.css";
-import Builder from "./builder/views/Builder";
 import belugaLogo from './assets/beluga_logo.png'
 import './App.css'
 import ListPages from './components/ListPages';
