@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import Header from "../../components/Header";
+import TextField from '@mui/material/TextField';
 import SelectBlockDialog from "../../components/SelectBlockDialog";
 import { BlockData } from "../../blocks";
+import "./Builder.css"
 
 function Builder() {
   const [blocks, setBlocks] = useState<any>([]);
@@ -19,17 +21,21 @@ function Builder() {
 
   const addBlock = (block: BlockData) => {
     console.log(block)
-    setBlocks([...blocks, React.createElement(block.component)]);
+    setBlocks([...blocks, <block.Component />]);
   }
   return (
     <>
-      Bonjour jeune site builder
-      <Button variant="contained" onClick={() => setBlocks([...blocks, <Header />])}>Ne pas cliquer</Button>
-      <Button variant="contained" onClick={() => setDialogOpen(true)}>Choisir un block</Button>
-      <SelectBlockDialog
-        open={isDialogOpen}
-        onClose={handleClose}
-      />
+      <div className="toolBar">
+        Bonjour jeune site builder
+        <TextField id="standard-basic" label="Titre" variant="standard" onChange={(e: any) => setTitle(e.target.value)} />
+        <TextField id="standard-basic" label="Description" variant="standard" onChange={(e: any) => setDescription(e.target.value)} />
+        <Button variant="contained" onClick={() => setBlocks([...blocks, <Header />])}>Ne pas cliquer</Button>
+        <Button variant="contained" onClick={() => setDialogOpen(true)}>Choisir un block</Button>
+        <SelectBlockDialog
+          open={isDialogOpen}
+          onClose={handleClose}
+        />
+      </div>
       {blocks}
     </>
   )

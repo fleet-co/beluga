@@ -36,7 +36,7 @@ const ListPages = () => {
                 <TimelineDot />
                 <TimelineConnector />
             </TimelineSeparator>
-            <TimelineContent><Link href={page.slug} underline="none">{page.name}</Link></TimelineContent>
+            <TimelineContent><Link href={`page/${page.slug}`} underline="none">{page.name}</Link></TimelineContent>
         </TimelineItem>
         )}
     </Timeline>  
