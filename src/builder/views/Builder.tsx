@@ -103,7 +103,7 @@ const Builder = () => {
           <div onClick={() => setActiveBlockIndex(index)}>
             <Component
               key={index}
-              {...block.contents}
+              contents={block.contents}
             />
           </div>
 
