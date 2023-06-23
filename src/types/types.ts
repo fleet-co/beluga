@@ -3,12 +3,12 @@ export interface BlockComponent {
   title: string;
   Component: (props: any) => JSX.Element;
   type: string;
+  contents: any;
 }
 
 export interface Block {
   id: number;
   order: number;
-  slug: string;
   type: string;
   contents: any;
 }

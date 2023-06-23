@@ -7,17 +7,32 @@ const blocks: BlockComponent[] = [
   {
     title: 'Hero header',
     Component: Header,
-    type: "HERO"
+    type: "HERO",
+    contents: {
+      title: "Hello World",
+      description: "This is a description",
+      cta_text: "Click me",
+      cta_link: "https://fleet.co",
+    }
   },
   {
     title: 'Blabla Block',
     Component: BlablaBlock,
-    type: "BLABLA"
+    type: "BLABLA",
+    contents: {
+      title: "Hello World",
+      text: "This is a description",
+    }
   },
   {
     title: 'Image & Text',
     Component: ImageAndText,
-    type: "IMG_TEXT"
+    type: "TEXTIMAGE",
+    contents: {
+      title: "Hello World",
+      description: "This is a description",
+      img_url: "https://fleet.co",
+    }
   },
 ];
 

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import SupabaseService from "../tools/SupabaseClient";
+import { Page } from '../types/types';
 
 import { Link } from '@mui/material';
 import { Timeline, TimelineItem, TimelineDot, TimelineSeparator, TimelineConnector, TimelineContent } from '@mui/lab';

@@ -6,7 +6,7 @@ import { IconButton, Stack } from "@mui/material";
 import { BlockComponent } from "../../types/types";
 
 function Builder() {
-  const [blocks, setBlocks] = useState<any>([]);
+  const [blocks, setBlocks] = useState<JSX.Element[]>([]);
   const [blocksData, setBlocksData] = useState<BlockComponent[]>([]);
   const [title, setTitle] = useState<string>('');
   const [description, setDescription] = useState<string>('');
@@ -23,6 +23,7 @@ function Builder() {
     console.log(block)
     setBlocks([...blocks, <block.Component />]);
   }
+
   return (
     <>
       <Stack position="fixed" bottom={16} right={16}>
