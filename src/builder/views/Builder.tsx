@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import Button from "@mui/material/Button";
-import Header from "../../components/Header";
-import TextField from '@mui/material/TextField';
 import SelectBlockDialog from "../../components/SelectBlockDialog";
 import { BlockData } from "../../blocks";
 import "./Builder.css"
+import AddBoxIcon from '@mui/icons-material/AddBox';
+import { IconButton, Stack } from "@mui/material";
 
 function Builder() {
   const [blocks, setBlocks] = useState<any>([]);
@@ -25,17 +24,17 @@ function Builder() {
   }
   return (
     <>
-      <div className="toolBar">
-        Bonjour jeune site builder
-        <TextField id="standard-basic" label="Titre" variant="standard" onChange={(e: any) => setTitle(e.target.value)} />
-        <TextField id="standard-basic" label="Description" variant="standard" onChange={(e: any) => setDescription(e.target.value)} />
-        <Button variant="contained" onClick={() => setBlocks([...blocks, <Header />])}>Ne pas cliquer</Button>
-        <Button variant="contained" onClick={() => setDialogOpen(true)}>Choisir un block</Button>
-        <SelectBlockDialog
-          open={isDialogOpen}
-          onClose={handleClose}
-        />
-      </div>
+      <Stack position="fixed" bottom={16} right={16}>
+        <IconButton
+          color="primary"
+          onClick={() => setDialogOpen(true)}>
+          <AddBoxIcon sx={{ fontSize: "78px" }} />
+        </IconButton>
+      </Stack>
+      <SelectBlockDialog
+        open={isDialogOpen}
+        onClose={handleClose}
+      />
       {blocks}
     </>
   )
