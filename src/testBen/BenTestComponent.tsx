@@ -8,7 +8,11 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 const { data: pages, error } = await supabase
   .from('pages')
-  .select();
+  .select(`
+    id,
+    name,
+    slug,
+    blocks (id, order, type, contents)`);
 
 const TestBenComponent = () => {
   console.log(pages);
