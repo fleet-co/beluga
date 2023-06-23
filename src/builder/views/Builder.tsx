@@ -7,7 +7,7 @@ import { IconButton, Stack } from "@mui/material";
 import { BlockComponent, BlockData } from "../../types/types";
 
 function Builder() {
-  const [blocks, setBlocks] = useState<JSX.Element[]>([]);
+  const [blocks, setBlocks] = useState<BlockComponent[]>([]);
   const [isEditable, setIsEditable] = useState<boolean>(false);
   const [activeBlock, setActiveBlock] = useState<BlockData>();
   const [blocksData, setBlocksData] = useState<BlockComponent[]>([]);
@@ -22,7 +22,7 @@ function Builder() {
 
   const addBlock = (block: BlockComponent) => {
     console.log(block)
-    setBlocks([...blocks, <block.Component isEditable />]);
+    setBlocks([...blocks, block]);
   }
 
   return (
@@ -39,7 +39,15 @@ function Builder() {
         onClose={handleClose}
       />
       {isEditable && <EditBar activeBlock={activeBlock} />}
-      {blocks}
+      {blocks.map((block, index) => {
+        console.log(block)
+        return (
+          <block.Component
+            key={index}
+            {...block.contents}
+          />
+        )
+      })}
     </>
   )
 }
