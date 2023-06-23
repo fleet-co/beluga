@@ -6,7 +6,6 @@ import ListPages from './components/ListPages';
 import { Button } from '@mui/material';
 
 const App = () => {
-
   return (
     <>
       <head>
