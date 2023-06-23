@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import Button from "@mui/material/Button";
-import Header from "../../components/blocks/Header";
 import EditBar from "../../components/EditBar";
 import SelectBlockDialog from "../../components/SelectBlockDialog";
 import "./Builder.css"
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import { IconButton, Stack } from "@mui/material";
-import { BlockComponent } from "../../types/types";
+import { BlockComponent, BlockData } from "../../types/types";
 
 function Builder() {
   const [blocks, setBlocks] = useState<JSX.Element[]>([]);
+  const [isEditable, setIsEditable] = useState<boolean>(false);
+  const [activeBlock, setActiveBlock] = useState<BlockData>();
   const [blocksData, setBlocksData] = useState<BlockComponent[]>([]);
   const [isDialogOpen, setDialogOpen] = useState<boolean>(false);
 
