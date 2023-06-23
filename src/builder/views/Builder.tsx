@@ -1,24 +1,25 @@
 import React, { useState } from "react";
 import SelectBlockDialog from "../../components/SelectBlockDialog";
-import { BlockData } from "../../blocks";
 import "./Builder.css"
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import { IconButton, Stack } from "@mui/material";
+import { BlockComponent } from "../../types/types";
 
 function Builder() {
   const [blocks, setBlocks] = useState<any>([]);
+  const [blocksData, setBlocksData] = useState<BlockComponent[]>([]);
   const [title, setTitle] = useState<string>('');
   const [description, setDescription] = useState<string>('');
   const [isDialogOpen, setDialogOpen] = useState<boolean>(false);
 
-  const handleClose = (value: BlockData | undefined) => {
+  const handleClose = (value: BlockComponent | undefined) => {
     setDialogOpen(false);
     if (value) {
       addBlock(value);
     }
   };
 
-  const addBlock = (block: BlockData) => {
+  const addBlock = (block: BlockComponent) => {
     console.log(block)
     setBlocks([...blocks, <block.Component />]);
   }
