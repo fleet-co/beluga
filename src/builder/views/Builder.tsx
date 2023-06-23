@@ -4,27 +4,28 @@ import SelectBlockDialog from "../../components/SelectBlockDialog";
 import "./Builder.css"
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import { IconButton, Stack } from "@mui/material";
-import { BlockComponent, BlockData } from "../../types/types";
+import { BlockData } from "../../types/types";
+import { getComponentByType } from "../../blocks";
 
 function Builder() {
-  const [blocks, setBlocks] = useState<BlockComponent[]>([]);
+  const [blocks, setBlocks] = useState<BlockData[]>([]);
   const [isEditable, setIsEditable] = useState<boolean>(false);
   const [activeBlock, setActiveBlock] = useState<BlockData>();
-  const [blocksData, setBlocksData] = useState<BlockComponent[]>([]);
+  const [blocksData, setBlocksData] = useState<BlockData[]>([]);
   const [isDialogOpen, setDialogOpen] = useState<boolean>(false);
 
-  const handleClose = (value: BlockComponent | undefined) => {
+  const handleClose = (value: BlockData | undefined) => {
     setDialogOpen(false);
     if (value) {
       addBlock(value);
     }
   };
 
-  const addBlock = (block: BlockComponent) => {
-    console.log(block)
+  const addBlock = (block: BlockData) => {
     setBlocks([...blocks, block]);
   }
 
+  console.log(blocks)
   return (
     <>
       <Stack position="fixed" bottom={16} right={16}>
@@ -40,9 +41,9 @@ function Builder() {
       />
       {isEditable && <EditBar activeBlock={activeBlock} />}
       {blocks.map((block, index) => {
-        console.log(block)
+        const Component = getComponentByType(block.type);
         return (
-          <block.Component
+          <Component
             key={index}
             {...block.contents}
           />

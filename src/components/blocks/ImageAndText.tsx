@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 
 interface ImageAndTextProps {
   image: string,
-  text: string,
+  text?: string,
 }
 
 const ImageAndText = (props: ImageAndTextProps) => {
@@ -25,8 +25,9 @@ const ImageAndText = (props: ImageAndTextProps) => {
           flexDirection: 'row',
         }}
       >
-        {text}{image}
+        {text}
       </Box>
+      <img src={image} />
     </Box>
   )
 }

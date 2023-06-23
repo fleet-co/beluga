@@ -1,12 +1,24 @@
-import Header from './components/blocks/Header';
 import BlablaBlock from './components/blocks/BlablaBlock';
 import ImageAndText from './components/blocks/ImageAndText';
-import { BlockComponent } from './types/types';
+import Header from './components/blocks/Header';
+import { BlockData } from './types/types';
 
-const blocks: BlockComponent[] = [
+export function getComponentByType(type: string): (props?: any) => JSX.Element | null {
+  switch (type) {
+    case "TEXTIMAGE":
+      return ImageAndText;
+    case "BLABLA":
+      return BlablaBlock;
+    case "HERO":
+      return Header;
+    default:
+      return () => null;
+  }
+}
+
+const blocks: BlockData[] = [
   {
-    title: 'Hero header',
-    Component: Header,
+    name: 'Hero header',
     type: "HERO",
     contents: {
       title: "Hello World",
@@ -16,8 +28,7 @@ const blocks: BlockComponent[] = [
     }
   },
   {
-    title: 'Blabla Block',
-    Component: BlablaBlock,
+    name: 'Blabla Block',
     type: "BLABLA",
     contents: {
       title: "Hello World",
@@ -25,8 +36,7 @@ const blocks: BlockComponent[] = [
     }
   },
   {
-    title: 'Image & Text',
-    Component: ImageAndText,
+    name: 'Image & Text',
     type: "TEXTIMAGE",
     contents: {
       title: "Hello World",
