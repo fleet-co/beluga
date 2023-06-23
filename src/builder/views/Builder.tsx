@@ -39,18 +39,28 @@ const Builder = () => {
     return name.toLowerCase().replace(/ /g, "-");
   }
 
-  const onSave = () => {
+  const onSave = async () => {
     const pageData = {
       name: pageName,
       slug: getSlugFromName(pageName),
-      blocks: blocks,
     }
 
     const sbs = new SupabaseService();
-    sbs.createPage(pageData).then((p: any) => {
-      console.log(p)
+
+    const insertedPage = await sbs.createPage(pageData);
+    if (insertedPage.error) {
+      console.error(insertedPage.error);
+      return;
     }
-    );
+
+    for (const block of blocks) {
+      const blockData = {
+        ...block,
+        page_id: insertedPage.data[0].id,
+      }
+      await sbs.createBlock(blockData);
+    }
+
   }
 
   return (
