@@ -19,7 +19,7 @@ function Builder() {
 
   const addBlock = (block: BlockData) => {
     console.log(block)
-    setBlocks([...blocks, React.createElement(block.component)]);
+    setBlocks([...blocks, <block.Component />]);
   }
   return (
     <>
