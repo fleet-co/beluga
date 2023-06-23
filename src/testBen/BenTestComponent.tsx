@@ -1,17 +1,31 @@
-import supabase from "../APIconfig/config";
+import { useEffect, useState } from 'react';
+import SupabaseService from "../tools/SupabaseClient";
 
-const { data: pages, error } = await supabase
-  .from("pages")
-  .select(`
-    id,
-    name,
-    slug,
-    blocks (id, order, type, contents)`);
+interface Block {
+  id: number;
+  order: number;
+  slug: string;
+  type: string;
+  contents: any;
+}
+interface Page {
+  id: number;
+  name: string;
+  slug: string;
+  blocks: Block[];
 
+
+}
 const TestBenComponent = () => {
-  console.log(pages);
+  const [pages, setPages] = useState<Page[]>([]);
+  useEffect(() => {
+    const sbs = new SupabaseService();
+    sbs.getPages().then((p: any) => {
+      setPages(p.data);
+    });
+  }, []);
 
-  return pages?.map(page => <>{page.name} : {page.slug}</>);
+  return pages?.map((page: Page) => <>{page.name} : {page.slug}</>);
 };
 
 export default TestBenComponent;
