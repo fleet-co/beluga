@@ -5,10 +5,11 @@ import SelectBlockDialog from "../../components/SelectBlockDialog";
 import "./Builder.css"
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import SaveIcon from '@mui/icons-material/Save';
-import { IconButton, Stack, TextField } from "@mui/material";
+import { IconButton, Stack, TextField, Avatar, Box, Link } from "@mui/material";
 import { BlockData } from "../../types/types";
 import { getComponentByType } from "../../blocks";
 import SupabaseService from "../../tools/SupabaseClient";
+import belugaLogo from '../../assets/beluga_logo.png'
 
 const Builder = () => {
   const [blocks, setBlocks] = useState<BlockData[]>([]);
@@ -65,7 +66,17 @@ const Builder = () => {
   return (
     <>
       <Stack direction="row" position="fixed" top={16} right={16}>
-        <TextField
+      <Box
+        sx={{
+          width: "90vw",
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between",
+        }}
+      >
+        <Link href="/"><Avatar alt="Remy Sharp" src={belugaLogo} /></Link>
+        <div>
+          <TextField
           id="standard-basic"
           color="primary"
           label="Standard"
@@ -82,6 +93,10 @@ const Builder = () => {
           disabled={pageName.length < 5}>
           <SaveIcon sx={{ fontSize: "32px" }} />
         </IconButton>
+        </div>
+    
+      </Box>
+
       </Stack>
       <Stack position="fixed" bottom={16} right={16}>
         <Button variant="contained" onClick={() => { setIsEditable(!isEditable) }}>Edit</Button>
