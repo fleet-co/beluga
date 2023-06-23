@@ -3,6 +3,8 @@ import Builder from "./builder/views/Builder";
 import belugaLogo from './assets/beluga_logo.png'
 import './App.css'
 import ListPages from './components/ListPages';
+import { Button } from '@mui/material';
+
 const App = () => {
 
   return (
@@ -20,6 +22,7 @@ const App = () => {
 
       <div className="section">
         <ListPages />
+        <Button variant="contained" href="/builder/new">Create a website</Button>
         <Builder />
       </div>
 
