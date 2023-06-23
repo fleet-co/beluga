@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Button from "@mui/material/Button";
+import Header from "../../components/Header";
 import SelectBlockDialog from "../../components/SelectBlockDialog";
 import { BlockData } from "../../blocks";
 
@@ -21,7 +22,7 @@ const App = () => {
   return (
     <>
       Bonjour jeune site builder
-      <Button variant="contained" onClick={() => setBlocks([...blocks, <div>e</div>])}>Ne pas cliquer</Button>
+      <Button variant="contained" onClick={() => setBlocks([...blocks, <Header />])}>Ne pas cliquer</Button>
       <Button variant="contained" onClick={() => setDialogOpen(true)}>Choisir un block</Button>
       <SelectBlockDialog
         open={isDialogOpen}
