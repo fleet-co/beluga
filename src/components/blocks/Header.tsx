@@ -40,6 +40,7 @@ const Header = (props: HeaderProps) => {
           <p>{contents.description || "lorum ipsum dolor con la visita de la sagrada familia"}</p>
           <Button variant="contained" href={contents.cta_link || bragman} target="_blank">{contents.cta_text || "Clique ici"}</Button>
         </div >
+        <img src={contents.image || belugaLogo}/>
       </Box >
     </Box >
   );
