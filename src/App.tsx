@@ -4,6 +4,7 @@ import belugaLogo from './assets/beluga_logo.png'
 import './App.css'
 import ListPages from './components/ListPages';
 import { Button } from '@mui/material';
+import Page from "./components/Page";
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
         <ListPages />
         <Button variant="contained" href="/builder/new">Create a website</Button>
       </div>
+      <Page />
     </>
   );
 };

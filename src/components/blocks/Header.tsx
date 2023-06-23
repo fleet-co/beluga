@@ -4,14 +4,14 @@ import Box from '@mui/material/Box';
 interface HeaderProps {
   title: string,
   description: string,
-  image: string,
-  ctaText: string,
-  ctaLink: string,
-  isEditable: boolean,
+  image?: string,
+  ctaText?: string,
+  ctaLink?: string,
+  isEditable?: boolean,
 }
 
 const Header = (props: HeaderProps) => {
-  const { title, description, image, ctaText, isEditable } = props;
+  const { title, description, image, ctaText, ctaLink, isEditable } = props;
 
   return (
     <Box
@@ -29,7 +29,7 @@ const Header = (props: HeaderProps) => {
           flexDirection: 'column',
         }}
       >
-        {title}{description}{image}{ctaText}
+        {title}{description}{image}{ctaText}{ctaLink}
         {isEditable && <p>OK</p>}
       </Box>
     </Box>
