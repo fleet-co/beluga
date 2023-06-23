@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Button from "@mui/material/Button";
-import Header from "../../components/blocks/Header";
 import EditBar from "../../components/EditBar";
 import SelectBlockDialog from "../../components/SelectBlockDialog";
 import "./Builder.css"
@@ -29,7 +28,7 @@ const Builder = () => {
     setBlocks([...blocks, block]);
   };
 
-  const updateBlockAtIndex = (index :number, updatedBlock :BlockData) => {
+  const updateBlockAtIndex = (index: number, updatedBlock: BlockData) => {
     let copyOfBlocks = [...blocks];
     copyOfBlocks[index] = updatedBlock;
     setBlocks(copyOfBlocks);
@@ -85,7 +84,7 @@ const Builder = () => {
         </IconButton>
       </Stack>
       <Stack position="fixed" bottom={16} right={16}>
-        <Button variant="contained" onClick={() => {setIsEditable(!isEditable)}}>Edit</Button>
+        <Button variant="contained" onClick={() => { setIsEditable(!isEditable) }}>Edit</Button>
         <IconButton
           color="primary"
           onClick={() => setDialogOpen(true)}>
@@ -96,7 +95,7 @@ const Builder = () => {
         open={isDialogOpen}
         onClose={handleClose}
       />
-      {isEditable && <EditBar activeBlock={blocks[activeBlockIndex]} setActiveBlockData={(block :BlockData) => updateBlockAtIndex(activeBlockIndex, block)} />}
+      {isEditable && <EditBar activeBlock={blocks[activeBlockIndex]} setActiveBlockData={(block: BlockData) => updateBlockAtIndex(activeBlockIndex, block)} />}
       {blocks.map((block, index: number) => {
         const Component = getComponentByType(block.type);
 
