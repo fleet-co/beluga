@@ -36,13 +36,13 @@ class SupabaseService {
 
   async createPage(pageData: PageData) {
     return this.client.from("pages")
-      .upsert(pageData)
+      .insert(pageData)
       .select();
   }
 
   async createBlock(blockData: BlockData) {
     return this.client.from("blocks")
-      .upsert(blockData)
+      .insert(blockData)
       .select();
   }
 
