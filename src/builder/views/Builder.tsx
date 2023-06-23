@@ -1,8 +1,8 @@
-import { useState } from 'react'
-import Button from '@mui/material/Button';
+import { useState } from "react";
+import Button from "@mui/material/Button";
 
-function App() {
-  const [blocks, setBlocks] = useState<any>([])
+const App = () => {
+  const [blocks, setBlocks] = useState<any>([]);
 
   return (
     <>
@@ -10,7 +10,7 @@ function App() {
       <Button variant="contained" onClick={() => setBlocks([...blocks, <div>e</div>])}>Ne pas cliquer</Button>
       {blocks}
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
