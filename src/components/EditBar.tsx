@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { BlockData } from "../../blocks";
@@ -47,7 +47,7 @@ const EditBar = ({ activeBlock, setActiveBlockData }: BlockData) => {
       <TextField id="standard-basic" label="Description" variant="standard" value={activeBlock.contents.title} onChange={(e: any) => updateBlockField('title', e.target.value)} />
       <TextField id="standard-basic" label="Description" variant="standard" value={activeBlock.contents.description}  onChange={(e: any) => updateBlockField('description', e.target.value)} />
     </div>
-  )
-}
+  );
+};
 
-export default EditBar
+export default EditBar;
