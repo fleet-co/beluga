@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import SupabaseService from "../tools/SupabaseClient";
 
 import { Link } from '@mui/material';
+import { Timeline, TimelineItem, TimelineDot, TimelineSeparator, TimelineConnector,TimelineContent } from '@mui/lab';
 
 interface Block {
   id: number;
@@ -27,7 +28,21 @@ const ListPages = () => {
     });
   }, []);
 
-  return <>{pages?.map(page => <Link href={page.slug}>{page.name}</Link>)}</>;
+  return (
+    <Timeline position="alternate">
+        {pages?.map(page =>
+        <TimelineItem>
+            <TimelineSeparator>
+                <TimelineDot />
+                <TimelineConnector />
+            </TimelineSeparator>
+            <TimelineContent><Link href={`page/${page.slug}`} underline="none">{page.name}</Link></TimelineContent>
+        </TimelineItem>
+        )}
+    </Timeline>  
+    );
+
+
 };
 
 export default ListPages;

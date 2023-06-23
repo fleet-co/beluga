@@ -2,13 +2,15 @@ import Header from './components/Header';
 
 export interface BlockData {
   title: string;
-  component: React.FC;
+  Component: React.FC;
+  type: string;
 }
 
 const blocks: BlockData[] = [
   {
     title: 'Hero header',
-    component: Header,
+    Component: Header,
+    type: "HERO"
   },
 ];
 
