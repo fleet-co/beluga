@@ -1,7 +1,7 @@
-import Box from '@mui/material/Box';
-import { Button } from '@mui/material';
-import belugaLogo from '../../assets/beluga_logo.png'
-import bragman from '../../assets/bragman.jpg'
+import Box from "@mui/material/Box";
+import { Button } from "@mui/material";
+import belugaLogo from "../../assets/beluga_logo.png";
+import bragman from "../../assets/bragman.jpg";
 interface HeaderProps {
   title: string,
   description: string,
@@ -18,28 +18,28 @@ const Header = (props: HeaderProps) => {
     <Box
       sx={{
         width: "100vw",
-        display: 'flex',
+        display: "flex",
         height: 300,
-        backgroundColor: 'warning.main',
+        backgroundColor: "warning.main",
       }}
     >
       <Box
         sx={{
           width: "100vw",
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-around'
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-around",
         }}
       >
         <div>
           <h1>{title || "hello"}</h1>
           <p>{description || "lorum ipsum dolor con la visita de la sagrada familia"}</p>
-          <Button variant="contained" href={ctaLink || bragman} target="_blank">{ctaText ||"Clique ici"}</Button>
+          <Button variant="contained" href={ctaLink || bragman} target="_blank">{ctaText || "Clique ici"}</Button>
         </div>
         <img src={image || belugaLogo}/>
       </Box>
     </Box>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

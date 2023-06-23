@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
-import Box from '@mui/material/Box';
-import productsList from "../../productData.json"
+import React, { useEffect } from "react";
+import Box from "@mui/material/Box";
+import productsList from "../../productData.json";
 
 
 interface ProductBlockProps {
@@ -20,31 +20,32 @@ const ProductBlock = (props: ProductBlockProps) => {
   const [product, setProduct] = React.useState<ProductBlock>();
 
   useEffect(() => {
-    const matchingProduct = productsList.find((product) => product.id === productId)
-    setProduct(matchingProduct)
-  }, [])
+    const matchingProduct = productsList.find((product) => product.id === productId);
+
+    setProduct(matchingProduct);
+  }, []);
 
   return (
     <Box
       sx={{
         width: "100vw",
-        display: 'flex',
+        display: "flex",
         height: 300,
-        backgroundColor: 'primary.dark',
+        backgroundColor: "primary.dark",
       }}
     >
       <Box
         sx={{
           width: "100vw",
-          display: 'flex',
-          flexDirection: 'column',
+          display: "flex",
+          flexDirection: "column",
         }}
       >
         {product?.name}{product?.description}{product?.price}
         <img src={product?.img_url} alt={product?.name} />
       </Box>
     </Box>
-  )
-}
+  );
+};
 
-export default ProductBlock
+export default ProductBlock;
