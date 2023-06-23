@@ -6,6 +6,8 @@ import Header from "./blocks/Header";
 import ImageAndText from "./blocks/ImageAndText";
 import BlablaBlock from "./blocks/BlablaBlock";
 
+import Stack from '@mui/material/Stack/Stack'
+import Container from "@mui/material/Container/Container"
 
 const Page = () => {
   const [blocks, setBlocks] = useState<Block[]>([]);
@@ -28,25 +30,24 @@ const Page = () => {
       {blocks.map((block: Block) => {
         if (block.type === "HERO") {
           return (
-            <Header title={block.contents.title} description={block.contents.description} ctaText={block.contents.cta_text} ctaLink={block.contents.cta_link} />
-          );
+            <Header contents={block.contents} />
+          )
         }
-
         if (block.type === "IMAGE") {
           return (
-            <ImageAndText image={block.contents.img_url} />
-          );
+            <ImageAndText contents={block.contents} />
+          )
         }
-
         if (block.type === "TEXT") {
           return (
-            <BlablaBlock title={block.contents.title} text={block.contents.description} />
-          );
+            <BlablaBlock contents={block.contents} />
+          )
         }
-      },
+      }
       )}
     </div>
-  );
-};
+  )
+}
+
 
 export default Page;

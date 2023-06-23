@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Button from "@mui/material/Button";
 import EditBar from "../../components/EditBar";
 import SelectBlockDialog from "../../components/SelectBlockDialog";
 import "./Builder.css"
@@ -12,9 +13,8 @@ import SupabaseService from "../../tools/SupabaseClient";
 const Builder = () => {
   const [blocks, setBlocks] = useState<BlockData[]>([]);
   const [isEditable, setIsEditable] = useState<boolean>(false);
+  const [activeBlockIndex, setActiveBlockIndex] = useState<number>(0);
   const [pageName, setPageName] = useState<string>("");
-  const [activeBlock, setActiveBlock] = useState<BlockData>();
-  const [blocksData, setBlocksData] = useState<BlockData[]>([]);
   const [isDialogOpen, setDialogOpen] = useState<boolean>(false);
 
   const handleClose = (value: BlockData | undefined) => {
@@ -25,26 +25,41 @@ const Builder = () => {
   };
 
   const addBlock = (block: BlockData) => {
-    const insertedBlock = { ...block, order: blocks.length + 1 };
-    setBlocks([...blocks, insertedBlock]);
-  }
+    setBlocks([...blocks, block]);
+  };
+
+  const updateBlockAtIndex = (index: number, updatedBlock: BlockData) => {
+    let copyOfBlocks = [...blocks];
+    copyOfBlocks[index] = updatedBlock;
+    setBlocks(copyOfBlocks);
+  };
 
   const getSlugFromName = (name: string) => {
     return name.toLowerCase().replace(/ /g, "-");
   }
 
-  const onSave = () => {
+  const onSave = async () => {
     const pageData = {
       name: pageName,
       slug: getSlugFromName(pageName),
-      blocks: blocks,
     }
 
     const sbs = new SupabaseService();
-    sbs.createPage(pageData).then((p: any) => {
-      console.log(p)
+
+    const insertedPage = await sbs.createPage(pageData);
+    if (insertedPage.error) {
+      console.error(insertedPage.error);
+      return;
     }
-    );
+
+    for (const block of blocks) {
+      const blockData = {
+        ...block,
+        page_id: insertedPage.data[0].id,
+      }
+      await sbs.createBlock(blockData);
+    }
+
   }
 
   return (
@@ -69,6 +84,7 @@ const Builder = () => {
         </IconButton>
       </Stack>
       <Stack position="fixed" bottom={16} right={16}>
+        <Button variant="contained" onClick={() => { setIsEditable(!isEditable) }}>Edit</Button>
         <IconButton
           color="primary"
           onClick={() => setDialogOpen(true)}>
@@ -79,16 +95,19 @@ const Builder = () => {
         open={isDialogOpen}
         onClose={handleClose}
       />
-      {isEditable && <EditBar activeBlock={activeBlock} />}
-      {blocks.map((block, index) => {
+      {isEditable && <EditBar activeBlock={blocks[activeBlockIndex]} setActiveBlockData={(block: BlockData) => updateBlockAtIndex(activeBlockIndex, block)} />}
+      {blocks.map((block, index: number) => {
         const Component = getComponentByType(block.type);
 
         return (
-          <Component
-            key={index}
-            {...block.contents}
-          />
-        );
+          <div onClick={() => setActiveBlockIndex(index)}>
+            <Component
+              key={index}
+              {...block.contents}
+            />
+          </div>
+
+        )
       })}
     </>
   );

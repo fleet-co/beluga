@@ -1,33 +1,38 @@
 import React from "react";
 import Box from "@mui/material/Box";
+import { blueGrey } from '@mui/material/colors';
 
-interface BlablaBlockProps {
+
+interface BlablaBlockContents {
   title: string,
-  text: string,
+  text?: string,
 }
 
-const BlablaBlock = (props: BlablaBlockProps) => {
-  const { text, title } = props;
+interface BlablaBlockProps {
+  contents: BlablaBlockContents
+}
 
+
+
+const BlablaBlock = (props: BlablaBlockProps) => {
+
+  const { contents } = props;
+
+  const primary = blueGrey['A100'];
   return (
     <Box
       sx={{
         width: "100vw",
-        display: "flex",
-        height: 300,
-        backgroundColor: "primary.dark",
+        display: 'flex',
+        flexDirection: 'column',
+        height: 400,
+        backgroundColor: primary,
+        color: "primary.dark"
       }}
     >
-      <Box
-        sx={{
-          width: "100vw",
-          display: "flex",
-          flexDirection: "row",
-        }}
-      >
-        {title}{text}
-      </Box>
-    </Box>
+      <h2>{contents.title}</h2>
+      <p>{contents.text}</p>
+    </Box >
   );
 };
 
