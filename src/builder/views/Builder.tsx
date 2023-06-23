@@ -1,8 +1,8 @@
-import { useState } from 'react'
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import SelectBlockDialog from '../../components/SelectBlockDialog';
-import './Builder.css';
+import React, { useState } from "react";
+import Button from "@mui/material/Button";
+import Header from "../../components/Header";
+import SelectBlockDialog from "../../components/SelectBlockDialog";
+import { BlockData } from "../../blocks";
 
 function Builder() {
   const [blocks, setBlocks] = useState<any>([]);
@@ -10,33 +10,28 @@ function Builder() {
   const [description, setDescription] = useState<string>('');
   const [isDialogOpen, setDialogOpen] = useState<boolean>(false);
 
-  const newDiv = (title: string, description: string) => {
-    return (
-      <div className="newDivContainer" sx={{backgroundColor: 'primary.dark'}}>
-        <h4>
-          {title}
-        </h4>
-        <p>
-        {description}
-        </p>
-      </div>
-    )
+  const handleClose = (value: BlockData | undefined) => {
+    setDialogOpen(false);
+    if (value) {
+      addBlock(value);
+    }
   };
 
+  const addBlock = (block: BlockData) => {
+    console.log(block)
+    setBlocks([...blocks, React.createElement(block.component)]);
+  }
   return (
-    <div className="builderContainer">
-      <div className="toolBar">
-        Bonjour jeune site builder
-        <TextField id="standard-basic" label="Titre" variant="standard" onChange={(e: any) => setTitle(e.target.value)} />
-        <TextField id="standard-basic" label="Description" variant="standard" onChange={(e: any) => setDescription(e.target.value)} />
-        <Button variant="contained" onClick={() => setBlocks([...blocks, newDiv(title, description)])}>Ne pas cliquer</Button>
-        <SelectBlockDialog
-          open={isDialogOpen}
-          onClose={() => setDialogOpen(false)}
-        />
-      </div>
+    <>
+      Bonjour jeune site builder
+      <Button variant="contained" onClick={() => setBlocks([...blocks, <Header />])}>Ne pas cliquer</Button>
+      <Button variant="contained" onClick={() => setDialogOpen(true)}>Choisir un block</Button>
+      <SelectBlockDialog
+        open={isDialogOpen}
+        onClose={handleClose}
+      />
       {blocks}
-    </div>
+    </>
   )
 }
 

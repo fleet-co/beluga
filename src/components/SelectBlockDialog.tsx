@@ -4,13 +4,13 @@ import blocks, { BlockData } from "../blocks";
 
 export interface SelectBlockDialogProps {
   open: boolean;
-  onClose: (value: BlockData) => void;
+  onClose: (value: BlockData | undefined) => void;
 }
 
 const SelectBlockDialog = (props: SelectBlockDialogProps) => {
   const [preSelectedBlock, setPreSelectedBlock] = useState<BlockData>()
 
-  const handleClose = (value: BlockData) => {
+  const handleClose = (value: BlockData | undefined) => {
     props.onClose(value);
   }
 
@@ -21,7 +21,7 @@ const SelectBlockDialog = (props: SelectBlockDialogProps) => {
   }
 
   return (
-    <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={props.open}>
+    <Dialog onClose={() => handleClose(undefined)} aria-labelledby="simple-dialog-title" open={props.open}>
       <DialogTitle>Choose a block</DialogTitle>
       <List sx={{ pt: 0 }}>
         {blocks.map((block) => (
@@ -37,8 +37,8 @@ const SelectBlockDialog = (props: SelectBlockDialogProps) => {
         ))}
       </List>
       <DialogActions>
-        <Button disabled={Boolean(preSelectedBlock)} onClick={onSubmit}>Ok</Button>
-        <Button onClick={() => setIsOpen(false)}>Cancel</Button>
+        <Button disabled={!Boolean(preSelectedBlock)} onClick={onSubmit}>Ok</Button>
+        <Button onClick={() => handleClose(undefined)}>Cancel</Button>
       </DialogActions>
     </Dialog>
   )
