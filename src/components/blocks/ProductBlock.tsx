@@ -20,7 +20,7 @@ const ProductBlock = (props: ProductBlockProps) => {
   const [product, setProduct] = React.useState<ProductBlock>();
 
   useEffect(() => {
-    const matchingProduct = productsList.find((product) => product.id === 1)
+    const matchingProduct = productsList.find((product) => product.id === productId)
     setProduct(matchingProduct)
   }, [])
 
