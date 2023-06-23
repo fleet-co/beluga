@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import { Button, Dialog, DialogActions, DialogTitle, List, ListItem } from "@mui/material";
 import blocks from "../blocks";
-import { BlockComponent } from "../types/types";
+import { BlockData } from "../types/types";
 
 export interface SelectBlockDialogProps {
   open: boolean;
-  onClose: (value: BlockComponent | undefined) => void;
+  onClose: (value: BlockData | undefined) => void;
 }
 
 const SelectBlockDialog = (props: SelectBlockDialogProps) => {
-  const [preSelectedBlock, setPreSelectedBlock] = useState<BlockComponent>()
+  const [preSelectedBlock, setPreSelectedBlock] = useState<BlockData>()
 
-  const handleClose = (value: BlockComponent | undefined) => {
+  const handleClose = (value: BlockData | undefined) => {
     props.onClose(value);
   }
 
@@ -27,12 +27,12 @@ const SelectBlockDialog = (props: SelectBlockDialogProps) => {
       <List sx={{ pt: 0 }}>
         {blocks.map((block) => (
           <ListItem
-            key={block.title}
+            key={block.name}
             onClick={() => {
               setPreSelectedBlock(block)
             }}
           >
-            {block.title}
+            {block.name}
             {block === preSelectedBlock && " (selected)"}
           </ListItem>
         ))}
