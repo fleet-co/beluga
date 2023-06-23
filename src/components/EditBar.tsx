@@ -6,34 +6,50 @@ import "./EditBar.css";
 import blocks from '../blocks';
 
 
-const ImageAndTextEditor = (props? :any) => null;
-const BlablaBlockEditor = () => null;
-const HeaderEditor = () => null;
+const ImageAndTextEditor = ({ block, setBlock }: any) => {
+  return <>
+    <TextField id="standard-basic" label="Image" variant="standard" value={block.contents.image} onChange={(e: any) => setBlock('image', e.target.value)} />
+    <TextField id="standard-basic" label="Text" variant="standard" value={block.contents.text} onChange={(e: any) => setBlock('text', e.target.value)} />
+  </>;
+};
 
 
-function getBlockEditFormByType(type: string): (props?: any) => JSX.Element | null {
+const BlablaBlockEditor = ({ block, setBlock }: any) => {
+  return <>
+    <TextField id="standard-basic" label="Title" variant="standard" value={block.contents.title} onChange={(e: any) => setBlock('title', e.target.value)} />
+    <TextField id="standard-basic" label="Text" variant="standard" value={block.contents.text} onChange={(e: any) => setBlock('text', e.target.value)} />
+  </>;
+};
+
+
+const HeaderEditor = ({block, setBlock} : any) =>{
+  console.log(block);
+  return <>
+    <TextField id="standard-basic" label="Title" variant="standard" value={block.contents.title} onChange={(e: any) => setBlock('title', e.target.value)} />
+    <TextField id="standard-basic" label="Description" variant="standard" value={block.contents.description} onChange={(e: any) => setBlock('description', e.target.value)} />
+    <TextField id="standard-basic" label="Image URL" variant="standard" value={block.contents.image} onChange={(e: any) => setBlock('image', e.target.value)} />
+    <TextField id="standard-basic" label="CTA Text" variant="standard" value={block.contents.cta_text} onChange={(e: any) => setBlock('cta_text', e.target.value)} />
+    <TextField id="standard-basic" label="CTA Link" variant="standard" value={block.contents.cta_link} onChange={(e: any) => setBlock('cta_link', e.target.value)} />
+  </>;
+};
+
+
+function getBlockEditFormByType(type: string): (props?: any) => any {
   switch (type) {
     case "TEXTIMAGE":
       return ImageAndTextEditor;
     case "BLABLA":
       return BlablaBlockEditor;
     case "HERO":
+      console.log(HeaderEditor)
       return HeaderEditor;
     default:
       return () => null;
   }
 }
 
-const EditBar = ({ activeBlock, setActiveBlockData }: BlockData) => {
-
-  const [title, setTitle] = useState();
-  const [description, setDescription] = useState();
-  console.log("actif", activeBlock);
-
+const EditBar = ({ activeBlock, setActiveBlockData }: any) => {
   const updateBlockField = (field :string, value : any) => {
-    console.log(field);
-    console.log(value);
-    console.log(activeBlock);
     setActiveBlockData({
       ...activeBlock,
       contents: {...activeBlock.contents, [field]: value},
@@ -43,9 +59,7 @@ const EditBar = ({ activeBlock, setActiveBlockData }: BlockData) => {
   const CustomEditor = getBlockEditFormByType(activeBlock.type);
   return (
     <div className="editBarContainer">
-      <CustomEditor block={activeBlock} setBlock={setActiveBlockData} />
-      <TextField id="standard-basic" label="Description" variant="standard" value={activeBlock.contents.title} onChange={(e: any) => updateBlockField('title', e.target.value)} />
-      <TextField id="standard-basic" label="Description" variant="standard" value={activeBlock.contents.description}  onChange={(e: any) => updateBlockField('description', e.target.value)} />
+      <CustomEditor block={activeBlock} setBlock={updateBlockField} />
     </div>
   );
 };
