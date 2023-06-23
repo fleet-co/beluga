@@ -1,7 +1,4 @@
 import React, { useState } from "react";
-import Button from "@mui/material/Button";
-import Header from "../../components/Header";
-import TextField from '@mui/material/TextField';
 import SelectBlockDialog from "../../components/SelectBlockDialog";
 import { BlockData } from "../../blocks";
 import "./Builder.css"
