@@ -2,17 +2,21 @@ import Box from '@mui/material/Box';
 import { Button } from '@mui/material';
 import belugaLogo from '../../assets/beluga_logo.png'
 import bragman from '../../assets/bragman.jpg'
+
 interface HeaderProps {
+  contents: HeaderContents
+}
+interface HeaderContents {
   title: string,
   description: string,
   image?: string,
-  ctaText?: string,
-  ctaLink?: string,
+  cta_text?: string,
+  cta_link?: string,
   isEditable?: boolean,
 }
 
 const Header = (props: HeaderProps) => {
-  const { title, description, image, ctaText, ctaLink } = props;
+  const { contents } = props;
 
   return (
     <Box
@@ -32,11 +36,10 @@ const Header = (props: HeaderProps) => {
         }}
       >
         <div>
-          <h1>{title || "hello"}</h1>
-          <p>{description || "lorum ipsum dolor con la visita de la sagrada familia"}</p>
-          <Button variant="contained" href={ctaLink || bragman} target="_blank">{ctaText ||"Clique ici"}</Button>
+          <h1>{contents.title || "hello"}</h1>
+          <p>{contents.description || "lorum ipsum dolor con la visita de la sagrada familia"}</p>
+          <Button variant="contained" href={contents.cta_link || bragman} target="_blank">{contents.cta_text || "Clique ici"}</Button>
         </div>
-        <img src={image || belugaLogo}/>
       </Box>
     </Box>
   )

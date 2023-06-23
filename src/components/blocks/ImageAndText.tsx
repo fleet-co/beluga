@@ -1,13 +1,17 @@
 import React from 'react'
 import Box from '@mui/material/Box';
 
-interface ImageAndTextProps {
-  image: string,
+interface ImageAndTextContents {
+  img_url: string,
   text?: string,
 }
 
+interface ImageAndTextProps {
+  contents: ImageAndTextContents
+}
+
 const ImageAndText = (props: ImageAndTextProps) => {
-  const { text, image } = props;
+  const { contents } = props;
 
   return (
     <Box
@@ -25,9 +29,9 @@ const ImageAndText = (props: ImageAndTextProps) => {
           flexDirection: 'row',
         }}
       >
-        {text}
+        {contents.text}
       </Box>
-      <img src={image} />
+      <img src={contents.img_url} />
     </Box>
   )
 }

@@ -1,13 +1,19 @@
 import React from 'react'
 import Box from '@mui/material/Box';
 
-interface BlablaBlockProps {
+
+interface BlablaBlockContents {
   title: string,
-  text: string,
+  text?: string,
+}
+
+interface BlablaBlockProps {
+  contents: BlablaBlockContents
 }
 
 const BlablaBlock = (props: BlablaBlockProps) => {
-  const { text, title } = props;
+
+  const { contents } = props;
 
   return (
     <Box
@@ -25,7 +31,7 @@ const BlablaBlock = (props: BlablaBlockProps) => {
           flexDirection: 'row',
         }}
       >
-        {title}{text}
+        {contents.title}{contents.text}
       </Box>
     </Box>
   )
