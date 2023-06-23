@@ -22,7 +22,6 @@ const App = () => {
       <div className="section">
         <ListPages />
         <Button variant="contained" href="/builder/new">Create a website</Button>
-        <Builder />
       </div>
 
     </>
