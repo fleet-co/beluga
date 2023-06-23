@@ -4,6 +4,7 @@ import { BlockData } from "../../blocks";
 import "./Builder.css"
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import { IconButton, Stack } from "@mui/material";
+import ProductBlock from "../../components/blocks/ProductBlock";
 
 function Builder() {
   const [blocks, setBlocks] = useState<any>([]);
@@ -36,6 +37,8 @@ function Builder() {
         onClose={handleClose}
       />
       {blocks}
+      <ProductBlock productId={12} />
+
     </>
   )
 }
