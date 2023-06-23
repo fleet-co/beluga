@@ -1,12 +1,27 @@
 import "./App.css";
-import BenTestComponent from "./testBen/BenTestComponent";
 import Builder from "./builder/views/Builder";
+import belugaLogo from './assets/beluga_logo.png'
+import './App.css'
+import ListPages from './components/ListPages';
 
 const App = () => {
 
   return (
     <>
-      <BenTestComponent />
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        />
+      </head>
+      <div className="section">
+        <ListPages />
+        <div>
+          <img src={belugaLogo} />
+          <h1>Welcome to Beluga</h1>
+        </div>
+
+      </div>
       <Builder />
     </>
   );
