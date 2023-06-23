@@ -2,23 +2,13 @@ import { useState } from "react";
 import Button from "@mui/material/Button";
 import Header from "../../components/Header";
 import SelectBlockDialog from "../../components/SelectBlockDialog";
-import { BlockData } from "../../blocks";
 
-const App = () => {
+function Builder() {
   const [blocks, setBlocks] = useState<any>([]);
+  const [title, setTitle] = useState<string>('');
+  const [description, setDescription] = useState<string>('');
   const [isDialogOpen, setDialogOpen] = useState<boolean>(false);
 
-  const handleClose = (value: BlockData | undefined) => {
-    setDialogOpen(false);
-    if (value) {
-      addBlock(value);
-    }
-  };
-
-  const addBlock = (block: BlockData) => {
-    console.log(block)
-    setBlocks([...blocks, block.component]);
-  }
   return (
     <>
       Bonjour jeune site builder
@@ -26,11 +16,11 @@ const App = () => {
       <Button variant="contained" onClick={() => setDialogOpen(true)}>Choisir un block</Button>
       <SelectBlockDialog
         open={isDialogOpen}
-        onClose={handleClose}
+        onClose={() => setDialogOpen(false)}
       />
       {blocks}
     </>
-  );
-};
+  )
+}
 
-export default App;
+export default Builder
