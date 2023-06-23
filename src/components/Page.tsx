@@ -6,6 +6,8 @@ import Header from "./blocks/Header";
 import ImageAndText from "./blocks/ImageAndText";
 import BlablaBlock from "./blocks/BlablaBlock";
 
+import Stack from '@mui/material/Stack/Stack'
+import Container from "@mui/material/Container/Container"
 
 const Page = () => {
   const [blocks, setBlocks] = useState<Block[]>([]);
@@ -24,29 +26,30 @@ const Page = () => {
 
 
   return (
-    <div>
-      {blocks.map((block: Block) => {
-        if (block.type === "HERO") {
-          return (
-            <Header title={block.contents.title} description={block.contents.description} ctaText={block.contents.cta_text} ctaLink={block.contents.cta_link} />
-          );
+    <Container>
+      <Stack spacing={2}>
+        {blocks.map((block: Block) => {
+          if (block.type === "HERO") {
+            return (
+              <Header title={block.contents.title} description={block.contents.description} ctaText={block.contents.cta_text} ctaLink={block.contents.cta_link} />
+            )
+          }
+          if (block.type === "IMAGE") {
+            return (
+              <ImageAndText image={block.contents.img_url} />
+            )
+          }
+          if (block.type === "TEXT") {
+            return (
+              <BlablaBlock title={block.contents.title} text={block.contents.description} />
+            )
+          }
         }
+        )}
+      </Stack>
+    </Container>
+  )
+}
 
-        if (block.type === "IMAGE") {
-          return (
-            <ImageAndText image={block.contents.img_url} />
-          );
-        }
-
-        if (block.type === "TEXT") {
-          return (
-            <BlablaBlock title={block.contents.title} text={block.contents.description} />
-          );
-        }
-      },
-      )}
-    </div>
-  );
-};
 
 export default Page;
