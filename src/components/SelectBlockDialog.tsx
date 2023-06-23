@@ -9,17 +9,17 @@ export interface SelectBlockDialogProps {
 }
 
 const SelectBlockDialog = (props: SelectBlockDialogProps) => {
-  const [preSelectedBlock, setPreSelectedBlock] = useState<BlockData>()
+  const [preSelectedBlock, setPreSelectedBlock] = useState<BlockData>();
 
   const handleClose = (value: BlockData | undefined) => {
     props.onClose(value);
-  }
+  };
 
   const onSubmit = () => {
     if (preSelectedBlock) {
-      handleClose(preSelectedBlock)
+      handleClose(preSelectedBlock);
     }
-  }
+  };
 
   return (
     <Dialog onClose={() => handleClose(undefined)} aria-labelledby="simple-dialog-title" open={props.open}>
@@ -29,7 +29,7 @@ const SelectBlockDialog = (props: SelectBlockDialogProps) => {
           <ListItem
             key={block.name}
             onClick={() => {
-              setPreSelectedBlock(block)
+              setPreSelectedBlock(block);
             }}
           >
             {block.name}
@@ -38,11 +38,11 @@ const SelectBlockDialog = (props: SelectBlockDialogProps) => {
         ))}
       </List>
       <DialogActions>
-        <Button disabled={!Boolean(preSelectedBlock)} onClick={onSubmit}>Ok</Button>
+        <Button disabled={!preSelectedBlock} onClick={onSubmit}>Ok</Button>
         <Button onClick={() => handleClose(undefined)}>Cancel</Button>
       </DialogActions>
     </Dialog>
-  )
-}
+  );
+};
 
 export default SelectBlockDialog;

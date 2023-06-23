@@ -1,9 +1,9 @@
-import React from 'react'
-import Box from '@mui/material/Box';
+import React from "react";
+import Box from "@mui/material/Box";
 
 interface ImageAndTextProps {
   image: string,
-  text: string,
+  text?: string,
 }
 
 const ImageAndText = (props: ImageAndTextProps) => {
@@ -13,22 +13,23 @@ const ImageAndText = (props: ImageAndTextProps) => {
     <Box
       sx={{
         width: "100vw",
-        display: 'flex',
+        display: "flex",
         height: 300,
-        backgroundColor: 'primary.dark',
+        backgroundColor: "primary.dark",
       }}
     >
       <Box
         sx={{
           width: "100vw",
-          display: 'flex',
-          flexDirection: 'row',
+          display: "flex",
+          flexDirection: "row",
         }}
       >
-        {text}{image}
+        {text}
       </Box>
+      <img src={image} />
     </Box>
-  )
-}
+  );
+};
 
 export default ImageAndText;

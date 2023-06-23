@@ -9,7 +9,7 @@ import { BlockData } from "../../types/types";
 import { getComponentByType } from "../../blocks";
 import SupabaseService from "../../tools/SupabaseClient";
 
-function Builder() {
+const Builder = () => {
   const [blocks, setBlocks] = useState<BlockData[]>([]);
   const [isEditable, setIsEditable] = useState<boolean>(false);
   const [pageName, setPageName] = useState<string>("");
@@ -47,7 +47,6 @@ function Builder() {
     );
   }
 
-  console.log(blocks)
   return (
     <>
       <Stack direction="row" position="fixed" top={16} right={16}>
@@ -83,15 +82,16 @@ function Builder() {
       {isEditable && <EditBar activeBlock={activeBlock} />}
       {blocks.map((block, index) => {
         const Component = getComponentByType(block.type);
+
         return (
           <Component
             key={index}
             {...block.contents}
           />
-        )
+        );
       })}
     </>
-  )
-}
+  );
+};
 
-export default Builder
+export default Builder;

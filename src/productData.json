@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "Microsoft Surface Book 3 13.5'",
+    "price": "124.90",
+    "img_url": "https://res.cloudinary.com/fleet-co/image/upload/v1681918055/products/surfacebook-3-13-mainImg.png",
+    "description": "The most powerful Surface laptop yet combines speed, graphics, and immersive gaming with the versatility of a laptop, tablet, and portable studio. Available in 13.5” or 15” sizes, both with a high-resolution touchscreen."
+  },
+  {
+    "id": 2,
+    "name": "Microsoft Surface Book 3 15'",
+    "price": "194.90",
+    "img_url": "https://res.cloudinary.com/fleet-co/image/upload/v1681918055/products/surfacebook-3-15-mainImg.png",
+    "description": "Wahou, this computer is very good. It is a dinguerie"
+  },
+  {
+    "id": 3,
+    "name": "iMac Retina 27\"",
+    "price": "89.9",
+    "img_url": "https://res.cloudinary.com/fleet-co/image/upload/v1681918030/products/imac-retina-27-mainImg.png",
+    "description": "The 27-inch iMac with Retina 5K display is loaded with up to 8GB of dedicated VRAM. And it can be configured with up to 32GB of memory, so you can enjoy visual effects and 3D graphics that previously were possible only on the highest-performance GPUs."
+  },
+  {
+    "id": 4,
+    "name": "Lenovo ThinkPad P14s Gen 2",
+    "price": "69.90",
+    "img_url": "https://fleet.fra1.digitaloceanspaces.com/img--1631698265724.png",
+    "description": "The Lonovo Computer is so great, you'll love it."
+  }
+]
