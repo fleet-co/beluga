@@ -14,16 +14,15 @@ const App = () => {
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
         />
       </head>
-        <div>
-          <img src={belugaLogo} />
-          <h1>Welcome to Beluga</h1>
-        </div>
+      <div>
+        <img src={belugaLogo} />
+        <h1>Welcome to Beluga</h1>
+      </div>
 
       <div className="section">
         <ListPages />
         <Builder />
       </div>
-
     </>
   );
 };
