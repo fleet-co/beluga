@@ -1,13 +1,13 @@
 import React from 'react'
 import Box from '@mui/material/Box';
 
-interface ImageAndTextProps {
-  image: string,
+interface BlablaBlockProps {
+  title: string,
   text: string,
 }
 
-const ImageAndText = (props: ImageAndTextProps) => {
-  const { text, image } = props;
+const BlablaBlock = (props: BlablaBlockProps) => {
+  const { text, title } = props;
 
   return (
     <Box
@@ -25,10 +25,10 @@ const ImageAndText = (props: ImageAndTextProps) => {
           flexDirection: 'row',
         }}
       >
-        {text}{image}
+        {title}{text}
       </Box>
     </Box>
   )
 }
 
-export default ImageAndText;
+export default BlablaBlock;
