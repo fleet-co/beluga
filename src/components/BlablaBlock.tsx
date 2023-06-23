@@ -1,16 +1,13 @@
 import React from 'react'
 import Box from '@mui/material/Box';
 
-interface HeaderProps {
+interface BlablaBlockProps {
   title: string,
-  description: string,
-  image: string,
-  ctaText: string,
-  ctaLink: string,
+  text: string,
 }
 
-const Header = (props: HeaderProps) => {
-  const { title, description, image, ctaText } = props;
+const BlablaBlock = (props: BlablaBlockProps) => {
+  const { text, title } = props;
 
   return (
     <Box
@@ -25,13 +22,13 @@ const Header = (props: HeaderProps) => {
         sx={{
           width: "100vw",
           display: 'flex',
-          flexDirection: 'column',
+          flexDirection: 'row',
         }}
       >
-        {title}{description}{image}{ctaText}
+        {title}{text}
       </Box>
     </Box>
   )
 }
 
-export default Header
+export default BlablaBlock;

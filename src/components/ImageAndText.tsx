@@ -1,16 +1,13 @@
 import React from 'react'
 import Box from '@mui/material/Box';
 
-interface HeaderProps {
-  title: string,
-  description: string,
+interface ImageAndTextProps {
   image: string,
-  ctaText: string,
-  ctaLink: string,
+  text: string,
 }
 
-const Header = (props: HeaderProps) => {
-  const { title, description, image, ctaText } = props;
+const ImageAndText = (props: ImageAndTextProps) => {
+  const { text, image } = props;
 
   return (
     <Box
@@ -25,13 +22,13 @@ const Header = (props: HeaderProps) => {
         sx={{
           width: "100vw",
           display: 'flex',
-          flexDirection: 'column',
+          flexDirection: 'row',
         }}
       >
-        {title}{description}{image}{ctaText}
+        {text}{image}
       </Box>
     </Box>
   )
 }
 
-export default Header
+export default ImageAndText;
