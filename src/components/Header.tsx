@@ -1,8 +1,20 @@
 import React from 'react'
+import Box from '@mui/material/Box';
+
 
 const Header = () => {
   return (
-    <div>Header</div>
+    <Box
+      sx={{
+        width: "100vw",
+        display: 'flex',
+        height: 300,
+        backgroundColor: 'primary.dark',
+      }}
+    >
+      <div>cheval</div>
+      <div>chapeau</div>
+    </Box>
   )
 }
 
