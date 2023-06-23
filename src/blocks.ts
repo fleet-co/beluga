@@ -1,18 +1,13 @@
 import Header from './components/blocks/Header';
 import BlablaBlock from './components/blocks/BlablaBlock';
 import ImageAndText from './components/blocks/ImageAndText';
+import { BlockComponent } from './types/types';
 
-export interface BlockData {
-  title: string;
-  Component: (props: any) => JSX.Element;
-  type: string;
-}
-
-const blocks: BlockData[] = [
+const blocks: BlockComponent[] = [
   {
     title: 'Hero header',
     Component: Header,
-    type: "HERO"
+    type: "HERO",
   },
   {
     title: 'Blabla Block',

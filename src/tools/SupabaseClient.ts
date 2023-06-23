@@ -1,4 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
+import { BlockData, PageData } from '../types/types';
 
 const pageDataToReturn = `
   id,
@@ -10,20 +11,6 @@ const pageDataToReturn = `
     type,
     contents
     )`;
-
-
-interface BlockData {
-  "page_id": number,
-  "name": string,
-  "order": number,
-  "type": string,
-  "contents": any
-}
-
-interface PageData {
-  "name": string,
-  "slug": string,
-}
 
 class SupabaseService {
   client;
